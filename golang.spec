@@ -1,3 +1,5 @@
+%global orig_name golang
+
 # build ids are not currently generated:
 # https://code.google.com/p/go/issues/detail?id=5238
 #
@@ -84,7 +86,7 @@
 %global go_api 1.6
 %global go_version 1.6
 
-Name:           golang
+Name:           golang16
 Version:        1.6
 Release:        1%{?dist}
 Summary:        The Go Programming Language
@@ -108,6 +110,7 @@ BuildRequires:  net-tools
 BuildRequires:  pcre-devel, glibc-static
 
 Provides:       go = %{version}-%{release}
+Provides:       %{orig_name} = %{version}-%{release}
 Requires:       %{name}-bin = %{version}-%{release}
 Requires:       %{name}-src = %{version}-%{release}
 Requires:       go-srpm-macros
@@ -133,14 +136,14 @@ Patch213:       go1.5beta1-disable-TestGdbPython.patch
 Patch215:       ./go1.5-zoneinfo_testing_only.patch
 
 # Having documentation separate was broken
-Obsoletes:      %{name}-docs < 1.1-4
+Obsoletes:      %{orig_name}-docs < 1.1-4
 
 # RPM can't handle symlink -> dir with subpackages, so merge back
-Obsoletes:      %{name}-data < 1.1.1-4
+Obsoletes:      %{orig_name}-data < 1.1.1-4
 
 # go1.4 deprecates a few packages
-Obsoletes:      %{name}-vim < 1.4
-Obsoletes:      emacs-%{name} < 1.4
+Obsoletes:      %{orig_name}-vim < 1.4
+Obsoletes:      emacs-%{orig_name} < 1.4
 
 # These are the only RHEL/Fedora architectures that we compile this package for
 ExclusiveArch:  %{golang_arches}
@@ -155,7 +158,7 @@ Source101:      golang-prelink.conf
 Summary:       Golang compiler docs
 Requires:      %{name} = %{version}-%{release}
 BuildArch:     noarch
-Obsoletes:     %{name}-docs < 1.1-4
+Obsoletes:     %{orig_name}-docs < 1.1-4
 
 %description   docs
 %{summary}.
@@ -189,26 +192,26 @@ Requires:       go = %{version}-%{release}
 # env variables to compile for the target os-arch.
 # Now the host compiler needs only the GOOS and GOARCH environment variables
 # set to compile for the target os-arch.
-Obsoletes:      %{name}-pkg-bin-linux-386 < 1.4.99
-Obsoletes:      %{name}-pkg-bin-linux-amd64 < 1.4.99
-Obsoletes:      %{name}-pkg-bin-linux-arm < 1.4.99
-Obsoletes:      %{name}-pkg-linux-386 < 1.4.99
-Obsoletes:      %{name}-pkg-linux-amd64 < 1.4.99
-Obsoletes:      %{name}-pkg-linux-arm < 1.4.99
-Obsoletes:      %{name}-pkg-darwin-386 < 1.4.99
-Obsoletes:      %{name}-pkg-darwin-amd64 < 1.4.99
-Obsoletes:      %{name}-pkg-windows-386 < 1.4.99
-Obsoletes:      %{name}-pkg-windows-amd64 < 1.4.99
-Obsoletes:      %{name}-pkg-plan9-386 < 1.4.99
-Obsoletes:      %{name}-pkg-plan9-amd64 < 1.4.99
-Obsoletes:      %{name}-pkg-freebsd-386 < 1.4.99
-Obsoletes:      %{name}-pkg-freebsd-amd64 < 1.4.99
-Obsoletes:      %{name}-pkg-freebsd-arm < 1.4.99
-Obsoletes:      %{name}-pkg-netbsd-386 < 1.4.99
-Obsoletes:      %{name}-pkg-netbsd-amd64 < 1.4.99
-Obsoletes:      %{name}-pkg-netbsd-arm < 1.4.99
-Obsoletes:      %{name}-pkg-openbsd-386 < 1.4.99
-Obsoletes:      %{name}-pkg-openbsd-amd64 < 1.4.99
+Obsoletes:      %{orig_name}-pkg-bin-linux-386 < 1.4.99
+Obsoletes:      %{orig_name}-pkg-bin-linux-amd64 < 1.4.99
+Obsoletes:      %{orig_name}-pkg-bin-linux-arm < 1.4.99
+Obsoletes:      %{orig_name}-pkg-linux-386 < 1.4.99
+Obsoletes:      %{orig_name}-pkg-linux-amd64 < 1.4.99
+Obsoletes:      %{orig_name}-pkg-linux-arm < 1.4.99
+Obsoletes:      %{orig_name}-pkg-darwin-386 < 1.4.99
+Obsoletes:      %{orig_name}-pkg-darwin-amd64 < 1.4.99
+Obsoletes:      %{orig_name}-pkg-windows-386 < 1.4.99
+Obsoletes:      %{orig_name}-pkg-windows-amd64 < 1.4.99
+Obsoletes:      %{orig_name}-pkg-plan9-386 < 1.4.99
+Obsoletes:      %{orig_name}-pkg-plan9-amd64 < 1.4.99
+Obsoletes:      %{orig_name}-pkg-freebsd-386 < 1.4.99
+Obsoletes:      %{orig_name}-pkg-freebsd-amd64 < 1.4.99
+Obsoletes:      %{orig_name}-pkg-freebsd-arm < 1.4.99
+Obsoletes:      %{orig_name}-pkg-netbsd-386 < 1.4.99
+Obsoletes:      %{orig_name}-pkg-netbsd-amd64 < 1.4.99
+Obsoletes:      %{orig_name}-pkg-netbsd-arm < 1.4.99
+Obsoletes:      %{orig_name}-pkg-openbsd-386 < 1.4.99
+Obsoletes:      %{orig_name}-pkg-openbsd-amd64 < 1.4.99
 
 Requires(post): %{_sbindir}/update-alternatives
 Requires(postun): %{_sbindir}/update-alternatives
