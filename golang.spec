@@ -108,6 +108,7 @@ BuildRequires:  net-tools
 %endif
 # for tests
 BuildRequires:  pcre-devel, glibc-static
+BuildRequires:  go-srpm-macros
 
 Provides:       go = %{version}-%{release}
 Provides:       %{orig_name} = %{version}-%{release}
