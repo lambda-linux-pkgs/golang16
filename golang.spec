@@ -1,3 +1,5 @@
+%define _buildid .1
+
 %global orig_name golang
 
 # build ids are not currently generated:
@@ -88,7 +90,7 @@
 
 Name:           golang16
 Version:        1.6
-Release:        1%{?dist}
+Release:        1%{?_buildid}%{?dist}
 Summary:        The Go Programming Language
 # source tree includes several copies of Mark.Twain-Tom.Sawyer.txt under Public Domain
 License:        BSD and Public Domain
