@@ -475,6 +475,11 @@ fi
 %endif
 
 %changelog
+* Sat Apr 02 2016 Rajiv M Ranganath <rajiv.ranganath@atihita.com> - 1.6-1
+- Add `BR: go-srpm-macros`
+- Change package name to `golang16`
+- Import source package FC24/golang-1.6-1.fc24
+
 * Mon Feb 22 2016 Jakub Čajka <jcajka@redhat.com> - 1.6-1
 - Resolves: bz1304701 - rebase to go1.6 release
 - Resolves: bz1304591 - fix possible stack miss-alignment in callCgoMmap
