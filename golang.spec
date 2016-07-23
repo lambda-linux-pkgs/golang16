@@ -130,6 +130,9 @@ Provides:       %{orig_name} = %{version}-%{release}
 Requires:       %{name}-bin = %{version}-%{release}
 Requires:       %{name}-src = %{version}-%{release}
 
+# Lambda Linux
+Conflicts:      golang < 1.5
+
 Patch0:         golang-1.2-verbose-build.patch
 
 # https://bugzilla.redhat.com/show_bug.cgi?id=1038683
