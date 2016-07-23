@@ -475,6 +475,17 @@ fi
 %endif
 
 %changelog
+* Sat Jul 23 2016 Rajiv M Ranganath <rajiv.ranganath@atihita.com> - 1.6.3-1
+- golang.spec: Bump version to 1.6.3
+- golang.spec: Conflict with golang < 1.5
+- golang.spec: Remove dependency on `go-srpm-macros`
+- golang.spec: Remove `mmap-cgo-stackalign.patch` and `golang-prelink.conf`
+- golang.spec: Add upstream `%changelog`
+- Add `go1.6.3.src.tar.gz`
+- Remove `mmap-cgo-stackalign.patch`
+- Remove `golang-prelink.conf`
+- Remove `go1.6.src.tar.gz`
+
 * Tue Jul 19 2016 Jakub Čajka <jcajka@redhat.com> - 1.6.3-1
 - rebase to 1.6.3
 - Resolves: bz1357602 - CVE-2016-5386
