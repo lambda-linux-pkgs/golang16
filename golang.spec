@@ -475,6 +475,20 @@ fi
 %endif
 
 %changelog
+* Tue Jul 19 2016 Jakub Čajka <jcajka@redhat.com> - 1.6.3-1
+- rebase to 1.6.3
+- Resolves: bz1357602 - CVE-2016-5386
+
+* Tue Apr 26 2016 Jakub Čajka <jcajka@redhat.com> - 1.6.2-1
+- rebase to 1.6.2
+- Resolves: bz1329206 - golang-1.6.2.src is available
+
+* Wed Apr 13 2016 Jakub Čajka <jcajka@redhat.com> - 1.6.1-1
+- rebase to 1.6.1
+- Resolves: bz1324344 - CVE-2016-3959
+- Resolves: bz1324951 - prelink is gone, /etc/prelink.conf.d/* is no longer used
+- Resolves: bz1326366 - wrong epoll_event struct for ppc64le/ppc64
+
 * Sat Apr 02 2016 Rajiv M Ranganath <rajiv.ranganath@atihita.com> - 1.6-1
 - Add `BR: go-srpm-macros`
 - Change package name to `golang16`
