@@ -123,10 +123,6 @@ Patch0:         golang-1.2-verbose-build.patch
 # https://bugzilla.redhat.com/show_bug.cgi?id=1038683
 Patch1:         golang-1.2-remove-ECC-p224.patch
 
-# Resolves RHBZ 1304591
-# https://github.com/golang/go/issues/14384
-Patch100:       mmap-cgo-stackalign.patch
-
 # use the arch dependent path in the bootstrap
 Patch212:       golang-1.5-bootstrap-binary-path.patch
 
@@ -152,7 +148,6 @@ Obsoletes:      emacs-%{orig_name} < 1.4
 ExclusiveArch:  %{golang_arches}
 
 Source100:      golang-gdbinit
-Source101:      golang-prelink.conf
 
 %description
 %{summary}.
@@ -252,8 +247,6 @@ Summary:        Golang shared object libraries
 
 # remove the P224 curve
 %patch1 -p1
-
-%patch100 -p1
 
 # use the arch dependent path in the bootstrap
 %patch212 -p1
@@ -383,11 +376,6 @@ ln -sf /etc/alternatives/gofmt $RPM_BUILD_ROOT%{_bindir}/gofmt
 mkdir -p $RPM_BUILD_ROOT%{_sysconfdir}/gdbinit.d
 cp -av %{SOURCE100} $RPM_BUILD_ROOT%{_sysconfdir}/gdbinit.d/golang.gdb
 
-# prelink blacklist
-mkdir -p $RPM_BUILD_ROOT%{_sysconfdir}/prelink.conf.d
-cp -av %{SOURCE101} $RPM_BUILD_ROOT%{_sysconfdir}/prelink.conf.d/golang.conf
-
-
 %check
 export GOROOT=$(pwd -P)
 export PATH="$GOROOT"/bin:"$PATH"
@@ -454,9 +442,6 @@ fi
 
 # gdbinit (for gdb debugging)
 %{_sysconfdir}/gdbinit.d
-
-# prelink blacklist
-%{_sysconfdir}/prelink.conf.d
 
 %files -f go-src.list src
 
