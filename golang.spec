@@ -2,6 +2,20 @@
 
 %global orig_name golang
 
+# Lambda Linux - Add macros from `go-srpm-macros` package so we can avoid
+# explicit dependency on this package.
+
+# Define arches for PA and SA
+%global golang_arches   %{ix86} x86_64 %{arm} aarch64 %{power64} s390x
+%global gccgo_arches    %{mips}
+%global go_arches       %{golang_arches} %{gccgo_arches}
+
+# Where to set GOPATH for builds
+%global gopath          %{_datadir}/gocode
+
+# Define go_compilers macro to signal go-compiler package is available
+%global go_compiler     1
+
 # build ids are not currently generated:
 # https://code.google.com/p/go/issues/detail?id=5238
 #
@@ -110,13 +124,11 @@ BuildRequires:  net-tools
 %endif
 # for tests
 BuildRequires:  pcre-devel, glibc-static
-BuildRequires:  go-srpm-macros
 
 Provides:       go = %{version}-%{release}
 Provides:       %{orig_name} = %{version}-%{release}
 Requires:       %{name}-bin = %{version}-%{release}
 Requires:       %{name}-src = %{version}-%{release}
-Requires:       go-srpm-macros
 
 Patch0:         golang-1.2-verbose-build.patch
 
